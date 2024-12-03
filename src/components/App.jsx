@@ -3,11 +3,11 @@ import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../redux/contactsOps";
+import { fetchContacts } from "../redux/contacts/contactsOps";
 
 function App() {
   const dispatch = useDispatch();
-  const { items, isLoading, error } = useSelector((state) => state.contacts);
+  const { isLoading, error } = useSelector((state) => state.contacts);
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);

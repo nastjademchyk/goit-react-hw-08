@@ -4,12 +4,18 @@ import "./index.css";
 import App from "./components/App";
 import "modern-normalize";
 import { store } from "./redux/store";
+import { HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
+// import { PersistGate } from "redux-persist/integration/react";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Provider store={store}>
-      <App />
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <HelmetProvider>
+        <App />
+      </HelmetProvider>
+      {/* </PersistGate> */}
     </Provider>
   </StrictMode>
 );
