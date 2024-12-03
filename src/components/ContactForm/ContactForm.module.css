@@ -1,0 +1,29 @@
+.form {
+  border-radius: 5px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  display: inline-block;
+  margin: 0 auto;
+  width: 100px;
+  padding: 2px;
+}
+
+.search_lines {
+  padding-bottom: 10px;
+}
+
+.error {
+  color: red;
+}

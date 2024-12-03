@@ -1,0 +1,32 @@
+.name {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+.number {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.container {
+  border-radius: 5px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 250px;
+  padding: 5px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.btn {
+  cursor: pointer;
+  display: flex;
+  margin-left: 5px;
+}
