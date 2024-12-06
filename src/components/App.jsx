@@ -5,7 +5,7 @@ import { useEffect, lazy } from "react";
 import RestrictedRoute from "../components/RestrictedRoute";
 import PrivateRoute from "../components/PrivateRoute";
 import { selectIsRefreshing } from "../redux/auth/selectors";
-// import { Suspense } from "react";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
@@ -20,7 +20,6 @@ function App() {
   ) : (
     <div>
       <Layout>
-        {/* <Suspense fallback={<div>Loading...</div>}> */}
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
@@ -47,9 +46,8 @@ function App() {
               <PrivateRoute redirectTo="/login" component={ContactsPage} />
             }
           />
-          {/* <Route path="*" element={<NotFound />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
-        {/* </Suspense> */}
       </Layout>
     </div>
   );
