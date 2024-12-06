@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./HomePage.module.css";
-import { DocumentTitle } from "../../components/DocumentTitle";
+import DocumentTitle from "../../components/DocumentTitle";
 
 const HomePage = () => {
   return (
