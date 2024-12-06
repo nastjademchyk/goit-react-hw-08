@@ -20,29 +20,49 @@ const clearAuthHeader = (token) => {
  * body: { name, email, password }
  */
 
-export const register = createAsyncThunk("auth/register", async () => {
-  try {
-  } catch (error) {}
-});
+export const register = createAsyncThunk(
+  "auth/register",
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.post("/users/signup", credentials);
+      setAuthHeader(response.data.token);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 /*
  * POST @ /users/login
  * body: { email, password }
  */
 
-export const login = createAsyncThunk("auth/login", async () => {
-  try {
-  } catch (error) {}
-});
+export const login = createAsyncThunk(
+  "auth/login",
+  async (credentials, thunkAPI) => {
+    try {
+      const response = await axios.post("/users/login", credentials);
+      setAuthHeader(response.data.token);
+      return res.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 
 /*
  * POST @ /users/logout
  * headers: Authorization: Bearer token
  */
 
-export const logout = createAsyncThunk("auth/logout", async () => {
+export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
-  } catch (error) {}
+    await axios.post("/users/logout");
+    clearAuthHeader();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
 });
 
 /*
@@ -50,7 +70,20 @@ export const logout = createAsyncThunk("auth/logout", async () => {
  * headers: Authorization: Bearer token
  */
 
-export const refreshUser = createAsyncThunk("auth/refresh", async () => {
-  try {
-  } catch (error) {}
-});
+export const refreshUser = createAsyncThunk(
+  "auth/refresh",
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue("Unable to fetch user");
+    }
+    try {
+      setAuthHeader(persistedToken);
+      const response = await axios.get("/users/current");
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
