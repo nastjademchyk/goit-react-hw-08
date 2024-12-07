@@ -2,8 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, lazy } from "react";
-import RestrictedRoute from "../components/RestrictedRoute";
-import PrivateRoute from "../components/PrivateRoute";
+import { RestrictedRoute } from "../components/RestrictedRoute";
+import { PrivateRoute } from "../components/PrivateRoute";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 

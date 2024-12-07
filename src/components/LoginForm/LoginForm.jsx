@@ -1,10 +1,9 @@
-import React from "react";
+// import React from "react";
 import s from "./LoginForm.module.css";
 import { login } from "../../redux/auth/operations";
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
-import { ErrorMessage } from "formik";
 
 const LoginForm = () => {
   const initialValues = {
@@ -27,14 +26,16 @@ const LoginForm = () => {
       onSubmit={0}
       validationSchema={FeedbackSchema}
     >
-      <label htmlFor={usernameFieldID}>Username</label>
-      <Field type="text" name="username" id={usernameFieldID} />
-      <ErrorMessage name="username" component="span" />
+      <Form>
+        <label htmlFor={usernameFieldID}>Username</label>
+        <Field type="text" name="username" id={usernameFieldID} />
+        <ErrorMessage name="username" component="span" />
 
-      <label htmlFor={emailFieldId}>Email</label>
-      <Field type="email" name="email" id={emailFieldId} />
-      <ErrorMessage name="email" component="span" />
-      <button type="submit">Log In</button>
+        <label htmlFor={emailFieldId}>Email</label>
+        <Field type="email" name="email" id={emailFieldId} />
+        <ErrorMessage name="email" component="span" />
+        <button type="submit">Log In</button>
+      </Form>
     </Formik>
   );
 };

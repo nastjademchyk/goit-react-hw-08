@@ -1,4 +1,9 @@
 .nav {
   display: flex;
+  text-decoration: none;
+  padding: 12px;
   gap: 20px;
+}
+.link {
+  text-decoration: none;
 }

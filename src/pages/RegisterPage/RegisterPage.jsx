@@ -1,5 +1,5 @@
-import { DocumentTitle } from "../../components/DocumentTitle";
-import { RegistrationForm } from "../../components/RegistrationForm/RegistrationForm";
+import DocumentTitle from "../../components/DocumentTitle";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
 import React from "react";
 
