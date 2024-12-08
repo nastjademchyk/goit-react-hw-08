@@ -8,6 +8,7 @@ import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -39,8 +40,14 @@ const RegistrationForm = () => {
   });
 
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(register(values));
-    resetForm();
+    dispatch(register(values))
+      .then(() => {
+        toast.success("Registration successful!");
+        resetForm();
+      })
+      .catch(() => {
+        toast.error("Registration failed. Please try again.");
+      });
   };
   const [showPassword, setShowPassword] = useState(false);
 

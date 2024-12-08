@@ -7,6 +7,7 @@ import { PrivateRoute } from "../components/PrivateRoute";
 import { selectIsRefreshing } from "../redux/auth/selectors";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import { refreshUser } from "../redux/auth/operations";
+import { Toaster } from "react-hot-toast";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
@@ -23,6 +24,7 @@ function App() {
     <b>Refreshing user...</b>
   ) : (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       <Layout>
         <Routes>
           <Route path="/" element={<HomePage />} />
