@@ -80,14 +80,23 @@ const LoginForm = () => {
             >
               Password
             </label>
-            <Field
-              className={`${s.label} ${
-                touched.password && errors.password ? s["input-error"] : ""
-              }`}
-              type="password"
-              name="password"
-              id={passwordFieldId}
-            />
+            <div className={s.passwordWrapper}>
+              <span
+                className={s.passwordIcon}
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+
+              <Field
+                className={`${s.label} ${
+                  touched.password && errors.password ? s["input-error"] : ""
+                }`}
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id={passwordFieldId}
+              />
+            </div>
             {touched.password && errors.password && (
               <ErrorMessage
                 name="password"

@@ -41,3 +41,27 @@ input {
   font-size: 0.875rem;
   margin-top: -16px;
 }
+
+.passwordIcon {
+  color: black;
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordWrapper input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.passwordIcon {
+  position: absolute;
+  right: 10px;
+  color: rgb(92, 83, 83);
+  cursor: pointer;
+  top: 50%;
+  transform: translateY(-70%);
+}

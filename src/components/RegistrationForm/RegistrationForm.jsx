@@ -6,6 +6,8 @@ import { useId } from "react";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
+import { FaEyeSlash, FaEye } from "react-icons/fa6";
+import { useState } from "react";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -40,6 +42,7 @@ const RegistrationForm = () => {
     dispatch(register(values));
     resetForm();
   };
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className={s.container}>
@@ -86,14 +89,22 @@ const RegistrationForm = () => {
             )}
 
             <label htmlFor={passwordFieldId}>Password</label>
-            <Field
-              className={`${s.label} ${
-                touched.password && errors.password ? s["input-error"] : ""
-              }`}
-              type="password"
-              name="password"
-              id={passwordFieldId}
-            />
+            <div className={s.passwordWrapper}>
+              <span
+                className={s.passwordIcon}
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              <Field
+                className={`${s.label} ${
+                  touched.password && errors.password ? s["input-error"] : ""
+                }`}
+                type={showPassword ? "text" : "password"}
+                name="password"
+                id={passwordFieldId}
+              />
+            </div>
             {touched.password && errors.password && (
               <ErrorMessage
                 name="password"
