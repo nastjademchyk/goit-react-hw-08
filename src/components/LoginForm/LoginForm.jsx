@@ -5,6 +5,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { FaEyeSlash, FaEye } from "react-icons/fa6";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,8 @@ const LoginForm = () => {
 
   const emailFieldId = useId();
   const passwordFieldId = useId();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const FeedbackSchema = Yup.object().shape({
     email: Yup.string().email("Must be a valid email!").required("Required"),
