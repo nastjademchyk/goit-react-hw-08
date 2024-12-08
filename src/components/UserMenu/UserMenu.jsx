@@ -10,7 +10,7 @@ export const UserMenu = () => {
 
   return (
     <div className={s.wrapper}>
-      <p className={s.name}>Welcome, {user.name}</p>
+      <p className={s.name}>Welcome, {user.name}!</p>
       <button
         className={s.btn}
         type="button"
