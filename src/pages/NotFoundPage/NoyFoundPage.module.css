@@ -1,0 +1,8 @@
+.text {
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding-top: 30px;
+  font-weight: 500;
+  font-size: 48;
+}

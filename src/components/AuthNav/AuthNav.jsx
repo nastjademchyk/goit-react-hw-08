@@ -4,7 +4,7 @@ import React from "react";
 
 export const AuthNav = () => {
   return (
-    <div className={s.nav}>
+    <div>
       <NavLink className={s.link} to="/register">
         Register
       </NavLink>

@@ -1,9 +1,7 @@
-.nav {
-  display: flex;
+.link {
+  display: inline-block;
   text-decoration: none;
   padding: 12px;
-  gap: 20px;
-}
-.link {
-  text-decoration: none;
+  font-weight: 700;
+  color: white;
 }

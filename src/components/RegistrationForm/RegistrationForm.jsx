@@ -35,26 +35,45 @@ const RegistrationForm = () => {
   });
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={0}
-      validationSchema={FeedbackSchema}
-    >
-      <Form>
-        <label htmlFor={usernameFieldID}>Username</label>
-        <Field type="text" name="username" id={usernameFieldID} />
-        <ErrorMessage name="username" component="span" />
+    <div className={s.container}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={0}
+        validationSchema={FeedbackSchema}
+      >
+        <Form className={s.form}>
+          <label htmlFor={usernameFieldID}>Username</label>
+          <Field
+            className={s.label}
+            type="text"
+            name="username"
+            id={usernameFieldID}
+          />
+          <ErrorMessage name="username" component="span" />
 
-        <label htmlFor={emailFieldId}>Email</label>
-        <Field type="email" name="email" id={emailFieldId} />
-        <ErrorMessage name="email" component="span" />
+          <label htmlFor={emailFieldId}>Email</label>
+          <Field
+            className={s.label}
+            type="email"
+            name="email"
+            id={emailFieldId}
+          />
+          <ErrorMessage name="email" component="span" />
 
-        <label htmlFor={passwordFieldId}></label>
-        <Field type="password" name="password" id={passwordFieldId} />
-        <ErrorMessage name="password" component="span" />
-        <button type="submit">Register</button>
-      </Form>
-    </Formik>
+          <label htmlFor={passwordFieldId}>Password</label>
+          <Field
+            className={s.label}
+            type="password"
+            name="password"
+            id={passwordFieldId}
+          />
+          <ErrorMessage name="password" component="span" />
+          <button className={s.btn} type="submit">
+            Register
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

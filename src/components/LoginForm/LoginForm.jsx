@@ -21,22 +21,36 @@ const LoginForm = () => {
     email: Yup.string().email("Must be a valid email!").required("Required"),
   });
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={0}
-      validationSchema={FeedbackSchema}
-    >
-      <Form>
-        <label htmlFor={usernameFieldID}>Username</label>
-        <Field type="text" name="username" id={usernameFieldID} />
-        <ErrorMessage name="username" component="span" />
+    <div className={s.container}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={0}
+        validationSchema={FeedbackSchema}
+      >
+        <Form className={s.form}>
+          <label htmlFor={usernameFieldID}>Username</label>
+          <Field
+            type="text"
+            name="username"
+            id={usernameFieldID}
+            className={s.label}
+          />
+          <ErrorMessage name="username" component="span" />
 
-        <label htmlFor={emailFieldId}>Email</label>
-        <Field type="email" name="email" id={emailFieldId} />
-        <ErrorMessage name="email" component="span" />
-        <button type="submit">Log In</button>
-      </Form>
-    </Formik>
+          <label htmlFor={emailFieldId}>Email</label>
+          <Field
+            type="email"
+            name="email"
+            id={emailFieldId}
+            className={s.label}
+          />
+          <ErrorMessage name="email" component="span" />
+          <button type="submit" className={s.btn}>
+            Log In
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 
