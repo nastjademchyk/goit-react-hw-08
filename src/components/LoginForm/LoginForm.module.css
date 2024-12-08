@@ -30,3 +30,14 @@ input {
 
   border: none;
 }
+
+.input-error {
+  border: 2px solid darkred;
+  background-color: #ffdddd;
+}
+
+.error-message {
+  color: darkred;
+  font-size: 0.875rem;
+  margin-top: -16px;
+}

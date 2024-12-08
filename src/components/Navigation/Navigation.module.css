@@ -4,4 +4,8 @@
   padding: 12px;
   font-weight: 700;
   color: white;
+  transition: transform 0.3s ease;
+}
+.nav:hover {
+  transform: scale(1.07);
 }

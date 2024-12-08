@@ -5,8 +5,10 @@ import { Formik, Form, Field } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
+import { useDispatch } from "react-redux";
 
 const RegistrationForm = () => {
+  const dispatch = useDispatch();
   const initialValues = {
     username: "",
     email: "",
@@ -34,44 +36,76 @@ const RegistrationForm = () => {
       .required("Required"),
   });
 
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(register(values));
+    resetForm();
+  };
+
   return (
     <div className={s.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={0}
+        onSubmit={handleSubmit}
         validationSchema={FeedbackSchema}
+        autoComplete="off"
       >
-        <Form className={s.form}>
-          <label htmlFor={usernameFieldID}>Username</label>
-          <Field
-            className={s.label}
-            type="text"
-            name="username"
-            id={usernameFieldID}
-          />
-          <ErrorMessage name="username" component="span" />
+        {({ errors, touched }) => (
+          <Form className={s.form}>
+            <label htmlFor={usernameFieldID}>Username</label>
+            <Field
+              className={`${s.label} ${
+                touched.username && errors.username ? s["input-error"] : ""
+              }`}
+              type="text"
+              name="username"
+              id={usernameFieldID}
+            />
+            {touched.username && errors.username && (
+              <ErrorMessage
+                name="username"
+                component="span"
+                className={s["error-message"]}
+              />
+            )}
 
-          <label htmlFor={emailFieldId}>Email</label>
-          <Field
-            className={s.label}
-            type="email"
-            name="email"
-            id={emailFieldId}
-          />
-          <ErrorMessage name="email" component="span" />
+            <label htmlFor={emailFieldId}>Email</label>
+            <Field
+              className={`${s.label} ${
+                touched.email && errors.email ? s["input-error"] : ""
+              }`}
+              type="email"
+              name="email"
+              id={emailFieldId}
+            />
+            {touched.email && errors.email && (
+              <ErrorMessage
+                name="email"
+                component="span"
+                className={s["error-message"]}
+              />
+            )}
 
-          <label htmlFor={passwordFieldId}>Password</label>
-          <Field
-            className={s.label}
-            type="password"
-            name="password"
-            id={passwordFieldId}
-          />
-          <ErrorMessage name="password" component="span" />
-          <button className={s.btn} type="submit">
-            Register
-          </button>
-        </Form>
+            <label htmlFor={passwordFieldId}>Password</label>
+            <Field
+              className={`${s.label} ${
+                touched.password && errors.password ? s["input-error"] : ""
+              }`}
+              type="password"
+              name="password"
+              id={passwordFieldId}
+            />
+            {touched.password && errors.password && (
+              <ErrorMessage
+                name="password"
+                component="span"
+                className={s["error-message"]}
+              />
+            )}
+            <button className={s.btn} type="submit">
+              Register
+            </button>
+          </Form>
+        )}
       </Formik>
     </div>
   );
