@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 const RegistrationForm = () => {
   const dispatch = useDispatch();
   const initialValues = {
-    username: "",
+    name: "",
     email: "",
     password: "",
   };
@@ -19,7 +19,7 @@ const RegistrationForm = () => {
   const passwordFieldId = useId();
 
   const FeedbackSchema = Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .min(2, "Too short!")
       .max(50, "Too Long!")
       .required("Required"),
@@ -54,15 +54,15 @@ const RegistrationForm = () => {
             <label htmlFor={usernameFieldID}>Username</label>
             <Field
               className={`${s.label} ${
-                touched.username && errors.username ? s["input-error"] : ""
+                touched.name && errors.name ? s["input-error"] : ""
               }`}
               type="text"
-              name="username"
+              name="name"
               id={usernameFieldID}
             />
-            {touched.username && errors.username && (
+            {touched.name && errors.name && (
               <ErrorMessage
-                name="username"
+                name="name"
                 component="span"
                 className={s["error-message"]}
               />

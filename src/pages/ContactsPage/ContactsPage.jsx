@@ -1,11 +1,12 @@
 import React from "react";
-import { DocumentTitle } from "../../components/DocumentTitle";
+import DocumentTitle from "../../components/DocumentTitle";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContacts } from "../../redux/contacts/contactsOps";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
+import s from "./ContactsPage.module.css";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const ContactsPage = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div>
+    <div className={s.container}>
       <DocumentTitle>Your contacts</DocumentTitle>
       <h1>Phone book</h1>
       {isLoading && <b>Loading tasks...</b>}

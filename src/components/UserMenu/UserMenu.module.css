@@ -1,0 +1,18 @@
+.btn {
+  padding: 6px;
+  color: white;
+  background-color: rgb(23, 21, 21);
+  border-radius: 5px;
+  border: none;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 20px;
+}
+
+.name {
+  font-weight: 700;
+}

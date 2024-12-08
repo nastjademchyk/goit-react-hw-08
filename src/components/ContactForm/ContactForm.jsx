@@ -35,29 +35,35 @@ const ContactForm = () => {
     actions.resetForm();
   };
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={FeedbackSchema}
-    >
-      <Form className={s.form}>
-        <div className={s.search_lines}>
-          <div className={s.block}>
-            <label htmlFor="">Name</label>
-            <Field type="text" name="name" />
-            <ErrorMessage name="name" component="span" className={s.error} />
+    <div className={s.container}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={FeedbackSchema}
+      >
+        <Form className={s.form}>
+          <div className={s.search_lines}>
+            <div className={s.block}>
+              <label htmlFor="">Name</label>
+              <Field type="text" name="name" />
+              <ErrorMessage name="name" component="span" className={s.error} />
+            </div>
+            <div className={s.block}>
+              <label htmlFor="">Number</label>
+              <Field type="text" name="number" />
+              <ErrorMessage
+                name="number"
+                component="span"
+                className={s.error}
+              />
+            </div>
           </div>
-          <div className={s.block}>
-            <label htmlFor="">Number</label>
-            <Field type="text" name="number" />
-            <ErrorMessage name="number" component="span" className={s.error} />
-          </div>
-        </div>
-        <button className={s.btn} type="submit">
-          Add contact
-        </button>
-      </Form>
-    </Formik>
+          <button className={s.btn} type="submit">
+            Add contact
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 
