@@ -11,7 +11,7 @@ const SearchBox = () => {
   const handleFilter = (event) => dispatch(changeFilter(event.target.value));
   return (
     <div className={s.search}>
-      <p>Find contacts by name</p>
+      <p>Find contacts by name or phone number</p>
       <input
         type="text"
         name="search"

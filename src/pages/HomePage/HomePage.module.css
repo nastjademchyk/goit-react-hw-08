@@ -1,8 +1,9 @@
 .container {
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   text-align: center;
   padding-top: 120px;
 }
@@ -11,4 +12,7 @@
   font-weight: 700;
   font-size: 48px;
   text-align: center;
+}
+.paragraph {
+  font-size: 18px;
 }
