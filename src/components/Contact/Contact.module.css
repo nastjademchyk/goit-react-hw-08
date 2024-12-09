@@ -38,6 +38,26 @@
   border: none;
 }
 
+.btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 .icon {
   color: white;
+}
+
+.iconEdit {
+  font-size: 22px;
+  color: white;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.iconEdit:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
 }

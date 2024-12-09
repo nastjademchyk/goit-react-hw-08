@@ -27,6 +27,11 @@
   cursor: pointer;
 }
 
+.btn:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
 .search_lines {
   padding-bottom: 10px;
 }
@@ -41,4 +46,5 @@
 
 .input {
   border-radius: 5px;
+  padding: 5px;
 }
