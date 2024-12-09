@@ -7,6 +7,7 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import s from "./ContactsPage.module.css";
+import { Hourglass } from "react-loader-spinner";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,17 @@ const ContactsPage = () => {
     <div className={s.container}>
       <DocumentTitle>Your contacts</DocumentTitle>
       <h1>Phone book</h1>
-      {isLoading && <b>Loading tasks...</b>}
+      {isLoading && (
+        <Hourglass
+          visible={true}
+          height="30"
+          width="30"
+          ariaLabel="hourglass-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          colors={["#black", "#white"]}
+        />
+      )}
       {error && <b>{error}</b>}
       <ContactForm />
       <SearchBox />

@@ -1,12 +1,17 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./contactsOps";
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  editContact,
+} from "./contactsOps";
 import { selectSearchFilter } from "../filters/filtersSelectors";
 import { selectContacts } from "./contactsSelectors";
 import { logout } from "../auth/operations";
 
 const initialState = {
   items: [],
-  loading: false,
+  isLoading: false,
   error: null,
 };
 
@@ -51,7 +56,18 @@ const slice = createSlice({
         state.items = [];
         state.loading = false;
         state.error = null;
-      });
+      })
+      .addCase(editContact.fulfilled, (state, action) => {
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
+        state.isLoading = false;
+      })
+      .addCase(editContact.pending, handlePending)
+      .addCase(editContact.rejected, handleReject);
   },
 });
 

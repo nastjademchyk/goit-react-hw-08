@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/contactsOps";
 import { nanoid } from "nanoid";
+import toast, { Toaster } from "react-hot-toast";
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,10 +33,12 @@ const ContactForm = () => {
     };
 
     dispatch(addContact(newContact));
+    toast.success("Contact has been added!");
     actions.resetForm();
   };
   return (
     <div className={s.container}>
+      <Toaster position="top-center" reverseOrder={false} />
       <Formik
         initialValues={initialValues}
         onSubmit={handleSubmit}
