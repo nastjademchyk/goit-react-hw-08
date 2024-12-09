@@ -54,7 +54,7 @@ const slice = createSlice({
       .addCase(deleteContact.rejected, handleReject)
       .addCase(logout.fulfilled, (state) => {
         state.items = [];
-        state.loading = false;
+        state.isLoading = false;
         state.error = null;
       })
       .addCase(editContact.fulfilled, (state, action) => {
