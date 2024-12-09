@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const RegistrationForm = () => {
   const usernameFieldID = useId();
   const emailFieldId = useId();
   const passwordFieldId = useId();
+  const navigate = useNavigate();
 
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
@@ -41,13 +43,16 @@ const RegistrationForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(register(values))
+      .unwrap()
       .then(() => {
         toast.success("Registration successful!");
-        resetForm();
+
+        navigate("/contacts");
       })
       .catch(() => {
         toast.error("Registration failed. Please try again.");
       });
+    resetForm();
   };
   const [showPassword, setShowPassword] = useState(false);
 

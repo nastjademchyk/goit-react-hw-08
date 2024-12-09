@@ -8,11 +8,9 @@ const Layout = ({ children }) => {
   return (
     <div>
       <AppBar />
-      <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+      <Suspense fallback={null}>{children}</Suspense>
     </div>
   );
 };
 
 export default Layout;
-
-//in fallback I can add spinner
