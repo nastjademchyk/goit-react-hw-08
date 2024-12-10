@@ -10,3 +10,7 @@
 .link:hover {
   transform: scale(1.07);
 }
+
+.link.active {
+  color: black;
+}
