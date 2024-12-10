@@ -4,8 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url("./assets//bg-image-min.jpg"); */
-  background-color: darkblue;
+  background-image: url("./assets/bg-image-min.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -43,8 +42,9 @@ img {
   display: block;
   max-width: 100%;
 }
+
 @media (max-width: 768px) {
   body {
-    background-size: contain;
+    background-attachment: scroll;
   }
 }
