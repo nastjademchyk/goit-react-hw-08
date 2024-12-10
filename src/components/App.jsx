@@ -43,9 +43,11 @@ function App() {
   ) : (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
-      <Layout>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
+
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+
           <Route
             path="/register"
             element={
@@ -71,8 +73,8 @@ function App() {
             }
           />
           <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </div>
   );
 }

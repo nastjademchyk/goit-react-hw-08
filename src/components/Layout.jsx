@@ -4,11 +4,13 @@ import { Outlet } from "react-router-dom";
 
 import React from "react";
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <div>
       <AppBar />
-      <Suspense fallback={null}>{children}</Suspense>
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
