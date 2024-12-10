@@ -8,6 +8,7 @@ import { selectIsRefreshing } from "../redux/auth/selectors";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import { refreshUser } from "../redux/auth/operations";
 import { Toaster } from "react-hot-toast";
+import { Hourglass } from "react-loader-spinner";
 
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"));
 const ContactsPage = lazy(() => import("../pages/ContactsPage/ContactsPage"));
@@ -21,7 +22,24 @@ function App() {
   }, [dispatch]);
 
   return isRefreshing ? (
-    <b>Refreshing user...</b>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+      }}
+    >
+      <Hourglass
+        visible={true}
+        height="40"
+        width="40"
+        ariaLabel="hourglass-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        colors={["#ffffff", "#ffffff"]}
+      />
+    </div>
   ) : (
     <div>
       <Toaster position="top-center" reverseOrder={false} />
