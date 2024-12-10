@@ -3,7 +3,7 @@ import s from "./ModalEdit.module.css";
 import * as Yup from "yup";
 import React from "react";
 
-export const ModalEdit = ({ initialValues, onSave }) => {
+const ModalEdit = ({ initialValues, onSave }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too short!")
@@ -61,3 +61,5 @@ export const ModalEdit = ({ initialValues, onSave }) => {
     </div>
   );
 };
+
+export default ModalEdit;

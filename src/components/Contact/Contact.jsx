@@ -7,7 +7,7 @@ import { deleteContact } from "../../redux/contacts/contactsOps";
 import { editContact } from "../../redux/contacts/contactsOps";
 import { CiEdit } from "react-icons/ci";
 import toast, { Toaster } from "react-hot-toast";
-import { ModalDelete } from "../ModalDelete/ModalDelete";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();

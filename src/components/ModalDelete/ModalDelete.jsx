@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import s from "./ModalDelete.module.css";
 
-export const ModalDelete = ({ onConfirm, onCancel }) => {
+const ModalDelete = ({ onConfirm, onCancel }) => {
   const handleBackDropClick = (e) => {
     if (e.target === e.currentTarget) {
       onCancel();
@@ -37,3 +37,5 @@ export const ModalDelete = ({ onConfirm, onCancel }) => {
     </div>
   );
 };
+
+export default ModalDelete;
