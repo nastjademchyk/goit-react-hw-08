@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./ModalDelete.module.css";
 
 export const ModalDelete = ({ onConfirm, onCancel }) => {
@@ -7,6 +7,19 @@ export const ModalDelete = ({ onConfirm, onCancel }) => {
       onCancel();
     }
   };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      onConfirm();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [onConfirm]);
 
   return (
     <div className={s.modalOverlay} onClick={handleBackDropClick}>
