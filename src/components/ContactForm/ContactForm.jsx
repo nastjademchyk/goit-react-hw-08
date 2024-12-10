@@ -47,14 +47,14 @@ const ContactForm = () => {
         <Form className={s.form}>
           <div className={s.search_lines}>
             <div className={s.block}>
-              <label className={s.title} htmlFor="">
+              <label className={s.title} htmlFor="name">
                 Name
               </label>
               <Field type="text" name="name" className={s.input} />
               <ErrorMessage name="name" component="span" className={s.error} />
             </div>
             <div className={s.block}>
-              <label className={s.title} htmlFor="">
+              <label className={s.title} htmlFor="number">
                 Number
               </label>
               <Field className={s.input} type="text" name="number" />

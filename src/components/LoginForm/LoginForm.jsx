@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { FaEyeSlash, FaEye } from "react-icons/fa6";
+import toast, { Toaster } from "react-hot-toast";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,11 @@ const LoginForm = () => {
       .required("Required"),
   });
   const handleSubmit = (values, { resetForm }) => {
-    dispatch(login(values));
+    dispatch(login(values))
+      .unwrap()
+      .catch((error) => {
+        toast.error("Login failed. Please try again!");
+      });
     resetForm();
   };
 
