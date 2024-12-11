@@ -52,9 +52,14 @@ const ModalEdit = ({ initialValues, onSave }) => {
                 />
               </div>
             </div>
-            <button className={s.btn} type="submit">
-              Save
-            </button>
+            <div className={s.buttons}>
+              <button className={s.btnClose} type="submit">
+                Cancel
+              </button>
+              <button className={s.btnSave} type="submit">
+                Save
+              </button>
+            </div>
           </Form>
         </Formik>
       </div>

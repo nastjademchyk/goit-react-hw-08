@@ -8,13 +8,19 @@ import { editContact } from "../../redux/contacts/contactsOps";
 import { CiEdit } from "react-icons/ci";
 import toast, { Toaster } from "react-hot-toast";
 import ModalDelete from "../ModalDelete/ModalDelete";
+import ModalEdit from "../ModalEdit/ModalEdit";
 
 const Contact = ({ name, number, id }) => {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   const handleDeleteClick = () => {
     setShowModal(true);
+  };
+
+  const handleEdit = () => {
+    setShowEdit(true);
   };
 
   const handleDelete = () => {
@@ -27,18 +33,18 @@ const Contact = ({ name, number, id }) => {
     setShowModal(false);
   };
 
-  const handleEdit = () => {
-    const newName = prompt("Enter the new name: ", name);
-    const newNumber = prompt("Enter the new number", number);
-    if (newName && newNumber) {
-      dispatch(
-        editContact({
-          contactId: id,
-          updatedData: { name: newName, number: newNumber },
-        })
-      );
-    }
-  };
+  // const handleEdit = () => {
+  //   const newName = prompt("Enter the new name: ", name);
+  //   const newNumber = prompt("Enter the new number", number);
+  //   if (newName && newNumber) {
+  //     dispatch(
+  //       editContact({
+  //         contactId: id,
+  //         updatedData: { name: newName, number: newNumber },
+  //       })
+  //     );
+  //   }
+  // };
 
   return (
     <div className={s.container}>
@@ -54,8 +60,9 @@ const Contact = ({ name, number, id }) => {
       </div>
 
       {showModal && (
-        <ModalDelete on onConfirm={handleDelete} onCancel={handleCancel} />
+        <ModalDelete onConfirm={handleDelete} onCancel={handleCancel} />
       )}
+      {showEdit && <ModalEdit />}
       <button className={s.iconButton} onClick={handleEdit}>
         <CiEdit className={s.iconEdit} />
       </button>
