@@ -23,28 +23,29 @@ const Contact = ({ name, number, id }) => {
     setShowEdit(true);
   };
 
-  const handleDelete = () => {
-    dispatch(deleteContact(id));
-    toast.success("Contact deleted!");
-    setShowModal(false);
+  const editCancel = () => {
+    setShowEdit(false);
   };
 
   const handleCancel = () => {
     setShowModal(false);
   };
 
-  // const handleEdit = () => {
-  //   const newName = prompt("Enter the new name: ", name);
-  //   const newNumber = prompt("Enter the new number", number);
-  //   if (newName && newNumber) {
-  //     dispatch(
-  //       editContact({
-  //         contactId: id,
-  //         updatedData: { name: newName, number: newNumber },
-  //       })
-  //     );
-  //   }
-  // };
+  const handleDelete = () => {
+    dispatch(deleteContact(id));
+    toast.success("Contact deleted!");
+    setShowModal(false);
+  };
+  const handleEditSave = (updatedValues) => {
+    dispatch(
+      editContact({
+        contactId: id,
+        updatedData: updatedValues,
+      })
+    );
+    toast.success("Contact updated! ");
+    setShowEdit(false);
+  };
 
   return (
     <div className={s.container}>
@@ -62,7 +63,13 @@ const Contact = ({ name, number, id }) => {
       {showModal && (
         <ModalDelete onConfirm={handleDelete} onCancel={handleCancel} />
       )}
-      {showEdit && <ModalEdit />}
+      {showEdit && (
+        <ModalEdit
+          initialValues={{ name, number }}
+          onSave={handleEditSave}
+          onCancel={editCancel}
+        />
+      )}
       <button className={s.iconButton} onClick={handleEdit}>
         <CiEdit className={s.iconEdit} />
       </button>

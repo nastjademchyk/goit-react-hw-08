@@ -19,7 +19,7 @@ const handlePending = (state) => {
   state.isLoading = true;
 };
 
-const handleReject = (state) => {
+const handleReject = (state, action) => {
   state.isLoading = false;
   state.error = action.payload;
 };

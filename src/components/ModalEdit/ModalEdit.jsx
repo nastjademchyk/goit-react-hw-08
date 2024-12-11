@@ -1,9 +1,9 @@
 import { Form, Formik, Field, ErrorMessage } from "formik";
 import s from "./ModalEdit.module.css";
 import * as Yup from "yup";
-import React from "react";
+import React, { useEffect } from "react";
 
-const ModalEdit = ({ initialValues, onSave }) => {
+const ModalEdit = ({ initialValues, onSave, onCancel }) => {
   const FeedbackSchema = Yup.object().shape({
     name: Yup.string()
       .min(3, "Too short!")
@@ -18,9 +18,14 @@ const ModalEdit = ({ initialValues, onSave }) => {
   const handleSubmit = (values) => {
     onSave(values);
   };
+  const editBackDropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onCancel();
+    }
+  };
 
   return (
-    <div className={s.modalOverlay}>
+    <div className={s.modalOverlay} onClick={editBackDropClick}>
       <div className={s.modal}>
         <Formik
           initialValues={initialValues}
@@ -53,7 +58,7 @@ const ModalEdit = ({ initialValues, onSave }) => {
               </div>
             </div>
             <div className={s.buttons}>
-              <button className={s.btnClose} type="submit">
+              <button className={s.btnClose} type="button" onClick={onCancel}>
                 Cancel
               </button>
               <button className={s.btnSave} type="submit">
