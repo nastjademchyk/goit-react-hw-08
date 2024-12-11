@@ -3,7 +3,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 import { nanoid } from "nanoid";
 import toast, { Toaster } from "react-hot-toast";
 

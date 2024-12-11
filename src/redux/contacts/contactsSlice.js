@@ -4,7 +4,7 @@ import {
   addContact,
   deleteContact,
   editContact,
-} from "./contactsOps";
+} from "./operations";
 import { selectSearchFilter } from "../filters/filtersSelectors";
 import { selectContacts } from "./contactsSelectors";
 import { logout } from "../auth/operations";
